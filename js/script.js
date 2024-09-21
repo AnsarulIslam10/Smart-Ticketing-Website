@@ -1,59 +1,27 @@
-const seatLeft = parseInt(document.getElementById('seatLeft').innerText);
+const ticketInfoContainer = document.getElementById('ticketInfoContainer');
+const seatCount = document.getElementById('seatCount');
+const seatLeft = document.getElementById('seatLeft');
 
 
-// Selecting seat using function
+let selectedSeat = [];
 
-function selectSeat(id) {
-    document.getElementById(id).addEventListener('click', function () {
-        // const seat = document.getElementById(id);
-        document.getElementById(id).classList.add('bg-primary', 'text-white');
-        count++
-        const available = document.getElementById('seatLeft').innerText = seatLeft - count;
-        const seatCount = document.getElementById('seatCount').textContent = 40 - available;
+function handleSelectedSeat(event){
 
-        document.getElementById(id).addEventListener('click', function () {
-            document.getElementById(id).classList.remove('bg-primary', 'text-white');
-            count--;
-            document.getElementById('seatLeft').innerText = available + 1;
-            document.getElementById('seatCount').innerText = (40 - available) - 1;
-            selectSeat(id);
+    event.classList.add('bg-primary', "text-white")
 
-        })
-    })
-}
-
-let count = 0;
+    selectedSeat.push(event.innerText);
+    seatCount.innerText = selectedSeat.length; 
+    seatLeft.innerText = 40 - selectedSeat.length;
 
 
-// function to get seat info
-function seatInfo(id) {
-    document.getElementById(id).addEventListener('click', function () {
-        const div = document.createElement('div');
-        div.innerHTML = `
-    <div class="flex justify-between py-3">
-        <h2 class="">${id}</h2>
-        <h2 class="">Economey</h2>
-        <h2 class="">550</h2>
-    </div>
-
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <div class="flex justify-between py-3 px-3">
+         <h2 class="">${event.innerText}</h2>
+         <h2 class="">Economy</h2>
+         <h2 class="">550</h2>
+     </div>
+    
     `
-        document.getElementById('ticketInfoContainer').appendChild(div);
-
-        document.getElementById(id).addEventListener('click', function () {
-            document.getElementById('ticketInfoContainer').remove(div);
-            seatInfo(id)
-        })
-
-    })
+    ticketInfoContainer.appendChild(div)
 }
-
-seatInfo('a1')
-selectSeat('a1')
-selectSeat('a2')
-selectSeat('a3')
-selectSeat('a4')
-selectSeat('b1')
-selectSeat('b2')
-selectSeat('b3')
-selectSeat('b4')
-
