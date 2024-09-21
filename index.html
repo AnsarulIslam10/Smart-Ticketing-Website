@@ -208,7 +208,7 @@
 
 
             <!-- Ticket Booking Section -->
-            <div class="grid grid-cols-7 items-center bg-white rounded-3xl p-12 mt-12 gap-16">
+            <div class="grid grid-cols-7 items-start bg-white rounded-3xl p-12 mt-12 gap-16">
                 <div class="col-span-4">
                     <!-- left side -->
                     <h2 class="text-xl font-extrabold">Select Your Seat</h2>
@@ -225,7 +225,7 @@
                         </div>
                     </div>
 
-                    <!-- dirver seat -->
+                    <!-- driver seat -->
                     <div class="flex items-center gap-5 justify-end">
                         <button class="btn bg-gray-200 w-24 mb-4"><img src="images/wheel.png" alt=""></button>
                     </div>
@@ -351,7 +351,11 @@
                         </div>
 
                         <div id="ticketInfoContainer">
-
+                            <ul class="space-y-5">
+                                <h3 id="NoSeatBooked" class="text-lg font-semibold text-error capitalize text-center">
+                                    No Seat Booked
+                                </h3>
+                            </ul>
                         </div>
 
 
@@ -364,9 +368,9 @@
                         </div>
 
                         <div class="flex justify-center px-3">
-                            <input type="text" placeholder="Type here"
-                                class="input input-bordered w-full border-none" />
-                            <label for=""> <button class="btn bg-primary border-none text-white">Apply</button></label>
+                            <input id="cuponInput" type="text" placeholder="Type here"
+                                class="input input-bordered w-full border-none" disabled/>
+                            <label for=""> <button id="applyBtn" class="btn bg-primary border-none text-white" disabled>Apply</button></label>
                         </div>
 
                         <div class="flex justify-between px-3 pt-4 pb-8">

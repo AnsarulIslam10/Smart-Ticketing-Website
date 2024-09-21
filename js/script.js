@@ -3,25 +3,26 @@ const seatCount = document.getElementById('seatCount');
 const seatLeft = document.getElementById('seatLeft');
 
 
+
 let selectedSeat = [];
 
-function handleSelectedSeat(event){
+function handleSelectedSeat(event) {
 
     event.classList.add('bg-primary', "text-white")
 
     selectedSeat.push(event.innerText);
-    seatCount.innerText = selectedSeat.length; 
-    seatLeft.innerText = 40 - selectedSeat.length;
+    seatCount.innerText = selectedSeat.length;
+    const availableSeat = parseInt(seatLeft.innerText);
+    seatLeft.innerText = availableSeat - 1;
 
+    document.getElementById('NoSeatBooked').innerText ='';
 
-    const div = document.createElement('div');
-    div.innerHTML = `
-    <div class="flex justify-between py-3 px-3">
-         <h2 class="">${event.innerText}</h2>
-         <h2 class="">Economy</h2>
-         <h2 class="">550</h2>
-     </div>
+    ticketInfoContainer.innerHTML += `
+    <li class="text-base font-normal flex justify-between">
+    <span>${event.innerText}</span>
+    <span>Economy</span>
+    <span>550</span>
+    </li>
     
     `
-    ticketInfoContainer.appendChild(div)
 }
